@@ -1,0 +1,47 @@
+---
+  name: cronjob_dbserver_firewall_rule_delete
+  pack: "cronjob"
+  description: Crontimer to  delete db server firewall rule
+  enabled: true
+  trigger:
+    type: "core.st2.CronTimer"
+    parameters:
+        timezone: "Asia/Shanghai"
+        day_of_week: "*"
+        hour: 23
+        minute: 55
+        second: 0
+  
+  action:
+    ref: "cronjob.dbserver_firewall_rule_delete" 
+    parameters:
+        list_subscription_name:
+          description: list of subscription which dbserver in
+          required: true
+          type: array
+          items:
+             type: string
+          default: "{{config_context.list_subscription_name}}"
+        list_dbserver_type:
+          description: list of db server type
+          required: true
+          type: array
+          items:
+             type: string
+          default: "{{config_context.list_dbserver_type}}"
+        subscription_id:
+          description: key-value pairs of subscription name and  subscription id
+          required: true
+          type: object
+          default: "{{config_context.subscription_id}}"
+        client_id:
+          description: the azure service principal's client id
+          required: true
+          type: string
+          default: "{{config_context.client_id}}"
+        client_tenant:
+          description: the azure service principal's client tenant
+          required: true
+          type: string
+          default: "{{config_context.client_tenant}}"
+  

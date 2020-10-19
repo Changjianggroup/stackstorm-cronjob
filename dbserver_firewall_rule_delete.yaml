@@ -1,0 +1,38 @@
+---
+name: dbserver_firewall_rule_delete
+runner_type: python-script
+description: Action that delete dbserver firewall rule
+enabled: true
+entry_point: dbserver_firewall_rule_delete.py
+parameters:
+  list_subscription_name:
+    description: list of subscription which dbserver in
+    required: true
+    type: array
+    items:
+       type: string
+    default: "{{config_context.list_subscription_name}}"
+  list_dbserver_type:
+    description: list of db server type
+    required: true
+    type: array
+    items:
+       type: string
+    default: "{{config_context.list_dbserver_type}}"
+  subscription_id:
+    description: key-value pairs of subscription name and  subscription id
+    required: true
+    type: object
+    default: "{{config_context.subscription_id}}"
+  client_id:
+    description: the azure service principal's client id
+    required: true
+    type: string
+    default: "{{config_context.client_id}}"
+  client_tenant:
+    description: the azure service principal's client tenant
+    required: true
+    type: string
+    default: "{{config_context.client_tenant}}"
+
+

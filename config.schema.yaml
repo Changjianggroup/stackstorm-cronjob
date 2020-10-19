@@ -1,0 +1,30 @@
+---
+  subscription_id:
+    description: "The azure subscription id"
+    type: "object"
+    secret: false
+    required: true
+  client_id:
+    description: "The azure service principal id"
+    type: "string"
+    secret: false
+    required: true
+  client_tenant:
+    description: "The azure service principal tenant"
+    type: "string"
+    secret: false
+    required: true
+  list_subscription_name:
+    description: "list of subscription which dbserver in"
+    required: true
+    type: "array"
+    items:
+       type: "string"
+    required: true
+  list_dbserver_type:
+    description: "list of db server type"
+    required: true
+    type: "array"
+    items:
+       type: "string"
+    required: true
